@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Tank Battle</title>
+<meta charset="utf-8"/>
+<link rel="stylesheet" href="./src/lib/codemirror.css">
+<script src="./src/lib/codemirror.js"></script>
+<script src="./src/mode/javascript/javascript.js"></script>
+<script src="./src/addon/edit/matchbrackets.js"></script>
+<script src="./src/addon/comment/continuecomment.js"></script>
+<script src="./src/addon/comment/comment.js"></script>
+
+<script src="./src/pixi.dev.js"></script>
+<script src="./src/box2d.min.js"></script>
+<script src="./World.js"></script>
+<script src="./Interface.js"></script>
+<script src="./Renderer.js"></script>
+<script src="./Key.js"></script>
+<script src="./Map_Class.js"></script>
+<script src="./Map.js"></script>
+<script src="./TanKe.js"></script>
+
+<style type="text/css">
+.mainDiv
+{
+		width: 650px;
+		margin: 0 auto;
+}
+
+.titleDiv{
+	text-align: center;
+}
+</style>
+
+</head>
+<body>
+<div id="main" class='mainDiv'>
+<div class='titleDiv'>
+	<h3>Tank Battle</h3>
+	<p>
+		Player1: using "W","S","A","D","F" to control move and fire.
+		<br/>
+		Player2: using "I","K","J","L",";" to control move and fire.
+	</p>
+</div>
+<div id='mainFrame' class='mainDiv'></div>
+</div>
+
+<script type="text/javascript">
+	var World_wide=620;
+	var World_high=620;
+	var tankeworld=createWorld();
+	var stagea = new PIXI.Stage(0x00FF99);
+	var renderer = PIXI.autoDetectRenderer(World_wide, World_high);
+	var frame=document.getElementById("mainFrame");
+	frame.appendChild(renderer.view);
+
+	//add the Key press events
+	document.onkeydown = KeyDown;
+	createMap();
+	//add body
+	var tanke1=createTanke(100,300,stagea,1);
+	var tanke2=createTanke(300,100,stagea,2);
+	tanke1.m_rotation=0;
+</script>
+
+</body>
+</html>
